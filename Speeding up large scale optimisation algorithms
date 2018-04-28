@@ -1,0 +1,44 @@
+Speeding up large scale optimisation algorithms
+
+ZOPA use a custom algorithm written in python not cpython or c++
+
+prototype with pandas but compute in numpy
+
+always profile before optimising code,
+	iProfile extension to iPython
+	profiles every function call and will profile all nested
+
+
+indexing in pandas is 230 times slower than indexing in numpy
+
+why is panda slow?
+	DF is wrapper on top of numpy array
+	indices are a lookup hash table
+	indexes are immutable, need new index every time we append to it
+
+	lose type optimisation if heterogenous types in a single column
+	
+only create DF at end
+
+if you must iterate use DF.itertuples()
+
+can reproduce functionality in numpy
+	ie index using dictionaries or named tuples to mimic DF index
+
+multithreading/concurrency issues - stuff we know already
+
+for multiprocessing data must be serialised between processes
+	abstracted away with joblib
+
+https://pythonhosted.org/joblib/parallel.html
+
+numba -just in time dynamic compiler - speeds up scientific computation - faster than scython and can match c++
+
+https://numba.pydata.org/
+
+tip for numba:
+	types can be inferred but sometimes leads to unexpected conversions he prefers to do it manually
+
+	can get around GIL (with GIL release) allows true multithreading
+
+	compilation is costly don’t jit(just in time decorator) closures will be recompiled every time

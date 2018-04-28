@@ -1,0 +1,9 @@
+zooniverse
+
+using human classification (through the zooniverse website) and ML learning model together is better than either separately. Effectively you can use human classification to separate a large chunk of the data set, and focus on models data within that area.
+
+using drop out to make one neural net really a collection of many neural nets, and you are essentially taking average
+
+bayesian nueral networks
+
+at testing time pass through neural network (forward) many times. This will give us different values which we can use to create confidence intervals

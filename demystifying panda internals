@@ -1,0 +1,20 @@
+demystifying pandas internals
+
+slow down comes from types in data frame, memory loading is the biggest overhead
+
+DF(dtype = Object) is much slower than DF(dtype = float)
+all of this is from the extra loading needed for Object, need to get object then check the pointer to value
+
+
+DF has something called blockmanager accessed through df._data, manages different data types in one DF
+	each block is a numpy array 
+
+DF memory stored in columns, thats why operations on columns is fast but operation on rows is slow
+
+
+DF view copy error
+	some operations make a view of DF to operate on, this error is thrown when you attempt to change view but not necessarily the real DF
+
+BlockManager is being looked at to replace
+
+DF has no native support of string, has to be stored as object

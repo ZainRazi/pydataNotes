@@ -1,0 +1,22 @@
+numpy broadcasting, if you add array and int, int is broadcasted to match shape of array
+
+np array work by keeping your data in one blob opposed to pointers 
+any operations occur on the blob just interprets in a different way. do not need to write to new memory locations etc
+
+y.__array_interface__ : dumps out np objects info
+as you manipulate it data will not change but shape will etc
+
+
+strides = how far you need to go to next element ie ( 8, 8) move 8 bytes (one number) to get next across and down
+
+(8,16) would move 8 bytes across then 16 down, probably accessing garbage data
+
+einsum useful library but has its own syntax, sometimes faster than operating directly, but doesn’t need to create a copy, for some operations saves memory
+
+
+
+
+mixins: overriding __array_ufunc__ allows you to change behaviour of np.add, np.subtract etc
+
+
+ln 16-18 if argument passed in, ie array to add to original, if type is not this class raise error
